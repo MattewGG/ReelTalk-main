@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Postagem</title>
+</head>
+<body>
+    <h1>Criar Postagem</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}  <!-- Token CSRF -->
+        <div>
+            {{ form.titulo.label }}<br>
+            {{ form.titulo(size=40, placeholder="Título do filme") }}<br>
+            {% for error in form.titulo.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ form.review.label }}<br>
+            {{ form.review(rows=5, cols=40, placeholder="Review") }}<br>
+            {% for error in form.review.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ form.nota.label }}<br>
+            {{ form.nota(id="nota") }}<br>
+            {% for error in form.nota.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <button type="submit">Postar Review</button>
+    </form>
+</body>
+</html>
